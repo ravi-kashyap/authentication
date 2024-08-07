@@ -16,6 +16,8 @@ import { CardWrapper } from "./card-wrapper";
 import { Resolver } from "dns";
 import { resolve } from "path";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { FormError } from "@/components/form-error";
 
 export const LoginForm = () => {
     const form = useForm<z.infer<typeof LoginSchema>>({
@@ -25,6 +27,11 @@ export const LoginForm = () => {
             password: "",
         },
     });
+
+    const onSubmit = (values: z.infer<typeof LoginSchema>)=>{
+
+console.log(values)
+    }
     return (
         <CardWrapper
             headerLabel="Welcome Back"
@@ -35,7 +42,7 @@ export const LoginForm = () => {
             <Form {...form}>
                 <form
                     className="space-y-6"
-                    onSubmit={form.handleSubmit(() => { })}
+                    onSubmit={form.handleSubmit(onSubmit)}
                 >
                     <div className="space-y-4">
                         <FormField
@@ -64,7 +71,7 @@ export const LoginForm = () => {
                                     <FormControl>
                                         <Input
                                             {...field}
-                                            placeholder="password"
+                                            placeholder="********"
                                             type="password"
                                         />
                                     </FormControl>
@@ -73,6 +80,13 @@ export const LoginForm = () => {
     )}
                         />
                     </div>
+                    <FormError message="Invaild Credentials"/>
+                    <Button
+                    className="w-full"
+                    type="submit"
+                    >
+                        Login
+                    </Button>
                 </form>
             </Form>
         </CardWrapper>
