@@ -55,6 +55,23 @@ export const LoginForm = () => {
                                 </FormItem>
     )}
                         />
+                         <FormField
+                            control={form.control}
+                            name="password"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Password</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            {...field}
+                                            placeholder="password"
+                                            type="password"
+                                        />
+                                    </FormControl>
+                                    <FormMessage/>
+                                </FormItem>
+    )}
+                        />
                     </div>
                 </form>
             </Form>
